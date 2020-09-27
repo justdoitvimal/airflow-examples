@@ -13,10 +13,12 @@ from airflow.utils.dates import days_ago
 
 from airflow.models import DAG
 from airflow.operators.python_operator import PythonOperator
+from airflow.operators.email_operator import EmailOperator
 
 default_args = {
 	'owner':'vimal',
-	'start_date': days_ago(2)
+	'start_date': days_ago(2),
+	
 }
 	
 dag=DAG(
@@ -29,8 +31,9 @@ def print_content(ds,**kwargs):
 	
 	dateTimeObj = datetime.now()
 	print('timestamp is ',dateTimeObj)
-	pprint(kwargs)
-	print(ds)
+	test=5
+	raise ValueError('File not parsed completely/correctly')
+		
 	return "Heyyyyyyyyyyyyyy I passed"
 
 	
